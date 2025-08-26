@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix ero-alias: <http://w3id.org/ExperimentalResearchOntology/alias#> .
+@prefix ero-util: <http://w3id.org/ExperimentalResearchOntology/util#> .
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+
+ero-util:ProcedureSpec
+    a owl:Class ;
+    dcterms:conformsTo rfp:TrivialProfile ;
+    rdfs:label "Procedure Specification" ;
+    rdfs:comment "Protocol specifying the step-by-step experimental procedure." ;
+    rdfs:subClassOf ero-alias:OBI_Protocol ;
+.

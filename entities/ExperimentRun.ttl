@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix ero-alias: <http://w3id.org/ExperimentalResearchOntology/alias#> .
+@prefix ero-core: <http://w3id.org/ExperimentalResearchOntology/core#> .
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+
+ero-core:ExperimentRun
+    a owl:Class ;
+    dcterms:conformsTo rfp:TrivialProfile ;
+    rdfs:label "Experiment Run" ;
+    rdfs:comment "A specific execution of a robot experiment, characterized by having exactly one experiment type and producing observable results." ;
+    rdfs:subClassOf
+        ero-alias:OBI_StudyDesignExecution ,
+    [
+        a owl:Restriction ;
+        owl:onProperty ero-core:hasExperimentType ;
+        owl:cardinality 1 ;
+    ] ;
+.

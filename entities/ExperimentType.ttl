@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix ero-alias: <http://w3id.org/ExperimentalResearchOntology/alias#> .
+@prefix ero-core: <http://w3id.org/ExperimentalResearchOntology/core#> .
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+
+ero-core:ExperimentType
+    a owl:Class ;
+    dcterms:conformsTo rfp:TrivialProfile ;
+    rdfs:label "Experiment Type" ;
+    rdfs:comment "A category of robot experiments defined by a specific set of parameters that can be measured or observed." ;
+    rdfs:subClassOf
+        ero-alias:OBI_StudyDesign ,
+    [
+        a owl:Restriction ;
+        owl:onProperty ero-core:hasParameterUsage ;
+        owl:minCardinality 1 ;
+    ] , [
+        a owl:Restriction ;
+        owl:onProperty ero-core:hasMethodologySpec ;
+        owl:maxCardinality 1 ;
+    ] ;
+.

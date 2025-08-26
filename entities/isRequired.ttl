@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix ero-core: <http://w3id.org/ExperimentalResearchOntology/core#> .
+@prefix ero-util: <http://w3id.org/ExperimentalResearchOntology/util#> .
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+
+ero-util:isRequired
+    a owl:DatatypeProperty ;
+    dcterms:conformsTo rfp:TrivialProfile ;
+    rdfs:label "is required" ;
+    rdfs:comment "Indicates whether the parameter is required (true) or optional (false) for the experiment type." ;
+    rdfs:domain ero-core:ParameterUsage ;
+    rdfs:range xsd:boolean ;
+.

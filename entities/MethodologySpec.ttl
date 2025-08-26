@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix ero-alias: <http://w3id.org/ExperimentalResearchOntology/alias#> .
+@prefix ero-core: <http://w3id.org/ExperimentalResearchOntology/core#> .
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+
+ero-core:MethodologySpec
+    a owl:Class ;
+    dcterms:conformsTo rfp:TrivialProfile ;
+    rdfs:label "Methodology Specification" ;
+    rdfs:comment "A plan specification that describes the comprehensive methodology for conducting an experiment type through composed protocols and objectives." ;
+    rdfs:subClassOf
+        ero-alias:IAO_PlanSpecification ,
+    [
+        a owl:Restriction ;
+        owl:onProperty ero-alias:BFO_hasPart ;
+        owl:someValuesFrom [
+            a owl:Class ;
+            owl:unionOf
+                ero-alias:IAO_ObjectiveSpecification ,
+                ero-alias:OBI_Protocol ;
+        ] ;
+    ] ;
+.
