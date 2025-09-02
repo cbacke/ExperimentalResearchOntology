@@ -9,16 +9,16 @@
 @prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
 
 ero-core:ExperimentParameter
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Experiment Parameter" ;
-    rdfs:comment "A measurable or observable property that characterizes a specific type of robot experiment." ;
+    rdfs:comment "A measurable or observable property that characterizes a specific type of experiment." ;
     rdfs:subClassOf
         ero-alias:BFO_quality ,
         rdf:Property ,
         sosa:ObservableProperty ,
     [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty rdfs:domain ;
         owl:hasValue ero-core:ExperimentRun ;
     ] ;

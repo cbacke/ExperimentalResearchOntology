@@ -1,5 +1,6 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 @prefix ero-alias: <http://w3id.org/ExperimentalResearchOntology/alias#> .
@@ -7,18 +8,18 @@
 @prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
 
 ero-core:ExperimentType
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Experiment Type" ;
-    rdfs:comment "A category of robot experiments defined by a specific set of parameters that can be measured or observed." ;
+    rdfs:comment "A category of experiments characterized by a specific set of parameters that can be measured or observed." ;
     rdfs:subClassOf
         ero-alias:OBI_StudyDesign ,
     [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty ero-core:hasParameterUsage ;
         owl:minCardinality 1 ;
     ] , [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty ero-core:hasMethodologySpec ;
         owl:maxCardinality 1 ;
     ] ;

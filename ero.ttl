@@ -16,37 +16,36 @@
 @prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
 
 <http://w3id.org/ExperimentalResearchOntology/>
-    a owl:Ontology ;
-    dcterms:title "The Experimental Research Ontology (ERO)"@en ;
-    rdfs:label "The Experimental Research Ontology (ERO)"@en ;
-    dcterms:description "ERO is ... By using ERO to .... It further enables ... ERO can serve as ... ERO is defined at ... Any variance between that normative document and this document is an error in this document."@en ;
-    rdfs:comment "..."@en ;
+    rdf:type owl:Ontology ;
+    dcterms:title "Experimental Research Ontology (ERO)"@en ;
+    rdfs:label "Experimental Research Ontology (ERO)"@en ;
+    dcterms:description "The Experimental Research Ontology (ERO) is a small ontology that models some fundamental aspects of data creation in experimental research. ERO is aligned with several upper ontologies, including BFO, IAO, OBI, and SOSA. ERO enables the characterization of different types of experiments by specifying different methodologies and collections of parameters. Methodology specifications may include, e.g., research objectives, experiment setups and procedures, success criteria, or saftey regulations. Parameter usage may depend on experiment type, e.g., whether a parameter is required or not, or whether it is an independent or dependent variable. Parameter values are observed during experiment runs. Each experiment run has exactly one experiment type. Each experiment type can have any number of runs."@en ;
+    rdfs:comment "The Experimental Research Ontology (ERO) is a small ontology that models some fundamental aspects of data creation in experimental research. ERO is aligned with several upper ontologies, including BFO, IAO, OBI, and SOSA. ERO enables the characterization of different types of experiments by specifying different methodologies and collections of parameters. Methodology specifications may include, e.g., research objectives, experiment setups and procedures, success criteria, or saftey regulations. Parameter usage may depend on experiment type, e.g., whether a parameter is required or not, or whether it is an independent or dependent variable. Parameter values are observed during experiment runs. Each experiment run has exactly one experiment type. Each experiment type can have any number of runs."@en ;
     bibo:editor [
-        a foaf:Person ;
+        rdf:type foaf:Person ;
         foaf:name "Christian Backe" ;
         org:memberOf [
             foaf:homepage <https://robotik.dfki-bremen.de/> ;
             foaf:name "DFKI Robotics Innovation Center, Bremen" ;
         ] ;
-        foaf:homepage <https://robotik.dfki-bremen.de/de/ueber-uns/mitarbeiter/person/chba02/> ;
+        foaf:homepage <https://robotik.dfki-bremen.de/en/about-us/staff/person/chba02/> ;
         rdfs:seeAlso <https://orcid.org/0009-0002-7114-0687> ;
     ] ;
     dcterms:contributor [
-        a foaf:Person ;
+        rdf:type foaf:Person ;
         foaf:name "Veit Briken" ;
         org:memberOf [
-            foaf:homepage <...> ;
-            foaf:name "..." ;
+            foaf:homepage <https://robotik.dfki-bremen.de/> ;
+            foaf:name "DFKI Robotics Innovation Center, Bremen" ;
         ] ;
         foaf:homepage <https://robotik.dfki-bremen.de/en/about-us/staff/person/vebr01/> ;
         rdfs:seeAlso <https://orcid.org/0009-0001-8153-237X> ;
     ] ;
     dcterms:created "2025-08-25"^^xsd:date ;
     dcterms:modified "2025-08-25"^^xsd:date ;
-    # TODO: ??? License ???
-    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:license <https://opensource.org/license/MIT/> ;
     dcterms:publisher [
-        a org:Organization;
+        rdf:type org:Organization;
         foaf:homepage <https://robotik.dfki-bremen.de/> ;
         foaf:name "DFKI Robotics Innovation Center, Bremen" ;
         rdfs:seeAlso <https://www.dfki.de/>;
@@ -96,53 +95,53 @@ ero-alias:OBI_StudyDesignExecution
 .
 
 ero-core:ExperimentType
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Experiment Type" ;
-    rdfs:comment "A category of robot experiments defined by a specific set of parameters that can be measured or observed." ;
+    rdfs:comment "A category of experiments characterized by a specific set of parameters that can be measured or observed." ;
     rdfs:subClassOf
         ero-alias:OBI_StudyDesign ,
     [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty ero-core:hasParameterUsage ;
         owl:minCardinality 1 ;
     ] , [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty ero-core:hasMethodologySpec ;
         owl:maxCardinality 1 ;
     ] ;
 .
 
 ero-core:ExperimentParameter
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Experiment Parameter" ;
-    rdfs:comment "A measurable or observable property that characterizes a specific type of robot experiment." ;
+    rdfs:comment "A measurable or observable property that characterizes a specific type of experiment." ;
     rdfs:subClassOf
         ero-alias:BFO_quality ,
         rdf:Property ,
         sosa:ObservableProperty ,
     [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty rdfs:domain ;
         owl:hasValue ero-core:ExperimentRun ;
     ] ;
 .
 
 ero-core:ParameterUsage
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Parameter Usage" ;
     rdfs:comment "Specifies how a parameter is used within a specific experiment type, for instance concerning its requirement status or variable role." ;
     rdfs:subClassOf [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty ero-core:usesParameter ;
         owl:cardinality 1 ;
     ] ;
 .
 
 ero-core:hasParameterUsage
-    a owl:ObjectProperty ;
+    rdf:type owl:ObjectProperty ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "has parameter usage" ;
     rdfs:comment "Links an experiment type to its parameter usage as a compositional part." ;
@@ -152,7 +151,7 @@ ero-core:hasParameterUsage
 .
 
 ero-core:usesParameter
-    a owl:ObjectProperty ;
+    rdf:type owl:ObjectProperty ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "uses parameter" ;
     rdfs:comment "Links a parameter usage to the parameter it contains as a part." ;
@@ -162,21 +161,21 @@ ero-core:usesParameter
 .
 
 ero-core:ExperimentRun
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Experiment Run" ;
-    rdfs:comment "A specific execution of a robot experiment, characterized by having exactly one experiment type and producing observable results." ;
+    rdfs:comment "A specific execution of an experiment, characterized by having exactly one experiment type and producing observable results." ;
     rdfs:subClassOf
         ero-alias:OBI_StudyDesignExecution ,
     [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty ero-core:hasExperimentType ;
         owl:cardinality 1 ;
     ] ;
 .
 
 ero-core:hasExperimentType
-    a owl:ObjectProperty ;
+    rdf:type owl:ObjectProperty ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "has experiment type" ;
     rdfs:comment "Links an experiment run to its experiment type." ;
@@ -187,7 +186,7 @@ ero-core:hasExperimentType
 .
 
 ero-core:hasExperimentRun
-    a owl:ObjectProperty ;
+    rdf:type owl:ObjectProperty ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "has experiment run" ;
     rdfs:comment "Links an experiment type to its experiment runs." ;
@@ -196,7 +195,7 @@ ero-core:hasExperimentRun
 .
 
 ero-core:hasMethodologySpec
-    a owl:ObjectProperty ;
+    rdf:type owl:ObjectProperty ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "has methodology specification" ;
     rdfs:comment "Links an experiment type to its methodology specification as a compositional part." ;
@@ -206,17 +205,17 @@ ero-core:hasMethodologySpec
 .
 
 ero-core:MethodologySpec
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Methodology Specification" ;
     rdfs:comment "A plan specification that describes the comprehensive methodology for conducting an experiment type through composed protocols and objectives." ;
     rdfs:subClassOf
         ero-alias:IAO_PlanSpecification ,
     [
-        a owl:Restriction ;
+        rdf:type owl:Restriction ;
         owl:onProperty ero-alias:BFO_hasPart ;
         owl:someValuesFrom [
-            a owl:Class ;
+            rdf:type owl:Class ;
             owl:unionOf
                 ero-alias:IAO_ObjectiveSpecification ,
                 ero-alias:OBI_Protocol ;
@@ -225,12 +224,12 @@ ero-core:MethodologySpec
 .
 
 ero-util:VariableRole
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Variable Role" ;
     rdfs:comment "Indicates whether a parameter serves as an independent or dependent variable in an experiment." ;
     owl:equivalentClass [
-        a owl:Class ;
+        rdf:type owl:Class ;
         owl:oneOf
             ero-util:DependentVariable ,
             ero-util:IndependentVariable ;
@@ -238,21 +237,21 @@ ero-util:VariableRole
 .
 
 ero-util:IndependentVariable
-    a ero-util:VariableRole ;
+    rdf:type ero-util:VariableRole ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Independent Variable" ;
     rdfs:comment "A parameter that is controlled or varied in the experiment." ;
 .
 
 ero-util:DependentVariable
-    a ero-util:VariableRole ;
+    rdf:type ero-util:VariableRole ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Dependent Variable" ;
     rdfs:comment "A parameter that is measured or observed as a result of the experiment." ;
 .
 
 ero-util:hasVariableRole
-    a owl:ObjectProperty ;
+    rdf:type owl:ObjectProperty ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "has variable role" ;
     rdfs:comment "Indicates whether the parameter is an independent or dependent variable." ;
@@ -261,7 +260,7 @@ ero-util:hasVariableRole
 .
 
 ero-util:isRequired
-    a owl:DatatypeProperty ;
+    rdf:type owl:DatatypeProperty ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "is required" ;
     rdfs:comment "Indicates whether the parameter is required (true) or optional (false) for the experiment type." ;
@@ -270,7 +269,7 @@ ero-util:isRequired
 .
 
 ero-util:ResearchObjectiveSpec
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Research Objective Specification" ;
     rdfs:comment "Specification of the research motivation and objectives for an experiment type." ;
@@ -278,7 +277,7 @@ ero-util:ResearchObjectiveSpec
 .
 
 ero-util:ExperimentSetupSpec
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Experiment Setup Specification" ;
     rdfs:comment "Protocol specifying the physical layout, equipment, and experimental apparatus." ;
@@ -286,7 +285,7 @@ ero-util:ExperimentSetupSpec
 .
 
 ero-util:ProcedureSpec
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Procedure Specification" ;
     rdfs:comment "Protocol specifying the step-by-step experimental procedure." ;
@@ -294,7 +293,7 @@ ero-util:ProcedureSpec
 .
 
 ero-util:SuccessCriteriaSpec
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Success Criteria Specification" ;
     rdfs:comment "Objective specification defining criteria for determining success or failure of an experiment run." ;
@@ -302,7 +301,7 @@ ero-util:SuccessCriteriaSpec
 .
 
 ero-util:RepetitionPolicySpec
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Repetition Policy Specification" ;
     rdfs:comment "Protocol specifying how many repetitions are conducted and under what conditions." ;
@@ -310,7 +309,7 @@ ero-util:RepetitionPolicySpec
 .
 
 ero-util:SafetySpec
-    a owl:Class ;
+    rdf:type owl:Class ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Safety Specification" ;
     rdfs:comment "Protocol specifying safety considerations and conditions for aborting runs due to safety risks." ;
