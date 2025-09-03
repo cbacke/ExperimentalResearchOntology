@@ -1,10 +1,13 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdof: <https://w3id.org/fdof/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 @prefix ero-alias: <http://w3id.org/ExperimentalResearchOntology/alias#> .
 @prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
 
 ero-alias:IAO_PlanSpecification
+    rdf:type fdof:FAIRDigitalObject ;
     dcterms:conformsTo rfp:TrivialProfile ;
     owl:equivalentClass <http://purl.obolibrary.org/obo/IAO_0000104> ;
 .
